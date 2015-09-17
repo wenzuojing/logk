@@ -1,0 +1,21 @@
+{
+
+  "hostName" : "192.168.199.212" ,
+  "kafkaServers": ["192.168.100.101:9092","192.168.100.102:9092","192.168.100.103:9092"] ,
+  "topic" : "glog" ,
+  "batchSize" : 5 ,
+  "tails" :[
+    {
+      "appName" : "album-web" ,
+      "logPath" : "/data/logs/album-web.log" ,
+      "separator" : "",
+      "tags" : {
+        "index" : "true" ,
+        "indexName" :  "ddd" ,
+        "indexType" :  "ddd"
+      }
+
+    }
+  ]
+
+}
