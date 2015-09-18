@@ -1,18 +1,18 @@
 {
 
   "hostName" : "192.168.199.212" ,
-  "kafkaServers": ["192.168.100.101:9092","192.168.100.102:9092","192.168.100.103:9092"] ,
+  "kafkaServers": ["172.16.1.151:9092","172.16.1.152:9092","172.16.1.153:9092"] ,
   "topic" : "glog" ,
   "batchSize" : 5 ,
   "tails" :[
     {
       "appName" : "album-web" ,
       "logPath" : "/data/logs/album-web.log" ,
-      "separator" : "",
+      "separator" : "#",
       "tags" : {
         "index" : "true" ,
-        "indexName" :  "ddd" ,
-        "indexType" :  "ddd"
+        "indexName" :  "appLog" ,
+        "indexType" :  "log"
       }
 
     }

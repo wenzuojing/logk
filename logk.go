@@ -162,7 +162,7 @@ func main() {
 	waiGroup.Add(1)
 	go func() {
 		defer waiGroup.Done()
-		buf := bytes.NewBuffer(make([]byte,0) )
+
 		for {
 
 			select {
@@ -177,7 +177,7 @@ func main() {
 
 			select {
 			case r := <-recordChan:
-				//
+				buf := bytes.NewBuffer(make([]byte,0) )
 				buf.WriteString(r.Content)
 				buf.WriteString("|#|")
 				buf.WriteString(r.AppName)
@@ -197,13 +197,13 @@ func main() {
 				}
 				buf.Write(bb)
 
+
 				runtimeInfo[r.LogPath] = r.Offset
 				producer.Input() <- &s.ProducerMessage{
 					Topic: conf.Topic,
 					Value: s.ByteEncoder(buf.Bytes()),
 					Key:s.StringEncoder(r.AppName),
 				}
-				buf.Reset()
 			case <-closeChan:
 				return
 
