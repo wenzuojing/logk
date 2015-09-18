@@ -61,7 +61,7 @@ var recordChan chan *Record
 func init() {
 
 	flag.StringVar(&confPath, "conf", "/etc/logk/conf.json", "-conf conf.json")
-	flag.BoolVar(&debug, "debug", true, "-debug true ")
+	flag.BoolVar(&debug, "debug", false , "-debug true ")
 	runtimeInfo = make(map[string]int64)
 	closeChan = make(chan bool)
 	recordChan = make(chan *Record, 10)
@@ -69,8 +69,8 @@ func init() {
 
 func main() {
 
+	flag.Parse()
 	//confPath = "/home/wens/go/src/logk/conf.json"
-
 	confFile, err := os.Open(confPath)
 
 	if err != nil {
